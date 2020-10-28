@@ -1,0 +1,93 @@
+.TH man 1 "21/07/2020" "Vrs.1.0.0" "_printf man page"
+.SH NAME
+_printf - format and print data
+.SH SYNOPSIS
+
+#include <holberton.h>
+
+int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+     The function in _printf () produces results according to a format. Using the printf function we can write data to the standard output device (display), you can also write any combination of numeric values, single characters, and character strings. The printf function transports data from memory to the screen. The printf function returns the number of characters written. A negative value indicates that an error has occurred. In general, a reference to the printf function is written:
+
+ 
+printf (control string, argument list);
+
+where control string refers to a character string that contains information about the format of the output and the list of arguments are arguments that represent the output data.
+
+      This function writes the output under the control of a format string that specifies how the subsequent arguments (or the arguments accessed through the stdarg (3) variable length argument facilities) are converted for the output.
+
+.SS FORMAT OF THE FORMAT STRING
+
+The format string is a character string, beginning and ending in its initial offset state, if it exists. The format string consists of zero or more directives: ordinary characters (not%), which are copied unchanged in the output stream; and conversion specifications, each of which results in getting zero or more subsequent arguments. Each conversion specification is entered by the% character, and ends with a conversion specifier.
+
+The arguments must correspond correctly (after type promotion) with the conversion specifier. By default, arguments are used in the order given, and each conversion specifier requests the following argument (and it's an error if not enough arguments are given).
+
+.SS CONVERSION SPECIFIER
+
+A character that specifies the type of conversion to be applied.  The conversion specifiers and their meanings are:
+
+d, i  The int argument is converted to signed decimal notation. 
+
+c     The int argument is converted to an unsigned char, and the resulting character is written.
+
+s     The const char * argument is expected to be a pointer to an array of character type (pointer to a string).  Characters from the array are written up to (but not including) a terminating null byte ('\0').
+
+%     A '%' is written.  No argument is converted.  The complete conversion specification is '%%'.
+
+o, u, x, X  The unsigned int argument is converted to unsigned octal (o), unsigned decimal (u), or unsigned hexadecimal (x and X) notation. The letters abcdef are used for x conversions; the letters ABCDEF are used for X conversions.
+
+p     The void * pointer argument is printed in hexadecimal.
+
+b     The unsigned int argument is converted to binary notation.
+
+S     The argument string is printed without non printable character ASCII value. These chars are printed this way: \x, followed by the ASCII code value in hexadecimal in upper case.
+
+r     The string argument is printed in reverse.
+
+R     The string argument is converted to rot13 encode.
+
+.SH RETURN VALUE
+
+Once the return has been satisfactory, these functions will immediately return all or the number of characters printed.
+
+In case the output throws an error, the function will be returning a negative.
+
+
+.SH EXAMPLE
+
+In this example we will print the entire string "Hello World" followed by a new line as always:
+
+.SS Option 1:
+
+ # include <stdio.h>
+ # include "holberton.h"
+
+int main()
+ {
+ _printf("Hello World\\n");
+ return (0);
+ }
+
+.SS Option 2:
+
+ # include <stdio.h>
+ # include "holberton.h"
+
+int main()
+ {
+  char *s = "Hello World\\n";
+
+ _printf("%s", s);
+ return (0);
+ }
+
+.SH BUGS
+You can report your error to: 1901@gmail.com and diego.urdaneta@holbertonschool.com
+
+.SH AUTHORS
+function coding and man writing by Cristia y Diego.               
+
+
+
+
